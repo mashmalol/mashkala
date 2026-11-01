@@ -1,35 +1,30 @@
 import type { Metadata } from "next";
 import { CartProvider } from "@/contexts/CartContext";
+import { BrowserFrame } from "@/components/chrome/BrowserFrame";
+import { SITE_NAME, SITE_URL } from "@/constants/data";
 import "./globals.css";
-
-const SITE_URL = "https://amirkabir-kala.example.com";
+import "./chrome.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "امیر کبیر کالا",
-  description:
-    "فروشگاه اینترنتی امیرکبیر کالا - فروش محصولات گروه آروا، ایران پتک و رونیکس با تخفیف ویژه",
+  title: SITE_NAME,
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: "/chrome/throbber-a.svg",
+    shortcut: "/chrome/throbber-a.svg",
+    apple: "/images/placeholder.png",
   },
   openGraph: {
-    title: "امیر کبیر کالا",
-    description:
-      "فروشگاه اینترنتی امیرکبیر کالا - فروش محصولات گروه آروا، ایران پتک و رونیکس با تخفیف ویژه",
+    title: SITE_NAME,
     url: SITE_URL,
-    siteName: "امیر کبیر کالا",
-    images: [{ url: "/images/logo.png" }],
+    siteName: SITE_NAME,
+    images: [{ url: "/images/placeholder.png" }],
     locale: "fa_IR",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "امیر کبیر کالا",
-    description:
-      "فروشگاه اینترنتی امیرکبیر کالا - فروش محصولات گروه آروا، ایران پتک و رونیکس با تخفیف ویژه",
-    images: ["/images/logo.png"],
+    title: SITE_NAME,
+    images: ["/images/placeholder.png"],
   },
 };
 
@@ -39,17 +34,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <head>
+        {/* App Router renders this link on every page, so the
+            `no-page-custom-font` warning (aimed at `pages/_document`) does not apply. */}
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,1,0"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,1,0&display=swap"
         />
       </head>
       <body>
-        <div className="main">
+        <BrowserFrame>
           <CartProvider>{children}</CartProvider>
-        </div>
+        </BrowserFrame>
       </body>
     </html>
   );

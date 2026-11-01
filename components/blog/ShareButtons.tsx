@@ -1,19 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { MaterialIcon } from "@/components/ui/MaterialIcon";
 
 export interface ShareButtonsProps {
   title: string;
 }
 
+/** `navigator.share` only exists in the browser, so read it as a client-only
+ * value that is `false` on the server to keep hydration markup in sync. */
+const subscribeToNothing = () => () => {};
+const getCanNativeShare = () => typeof navigator !== "undefined" && typeof navigator.share === "function";
+const getCanNativeShareOnServer = () => false;
+
 export function ShareButtons({ title }: ShareButtonsProps) {
   const [isCopied, setIsCopied] = useState(false);
-  const [canNativeShare, setCanNativeShare] = useState(false);
-
-  useEffect(() => {
-    setCanNativeShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
-  }, []);
+  const canNativeShare = useSyncExternalStore(
+    subscribeToNothing,
+    getCanNativeShare,
+    getCanNativeShareOnServer,
+  );
 
   const getShareUrl = () => (typeof window === "undefined" ? "" : window.location.href);
 

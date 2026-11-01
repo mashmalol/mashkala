@@ -15,17 +15,16 @@ const STANDARD_SHIPPING_COST = 150_000;
 
 export interface CartSummaryProps {
   subtotal: number;
-  onCheckoutComplete: () => void;
 }
 
 type DiscountState = { code: string; rate: number } | null;
 
-export function CartSummary({ subtotal, onCheckoutComplete }: CartSummaryProps) {
+export function CartSummary({ subtotal }: CartSummaryProps) {
   const [codeInput, setCodeInput] = useState("");
   const [discount, setDiscount] = useState<DiscountState>(null);
   const [discountError, setDiscountError] = useState<string | null>(null);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_COST;
   const discountAmount = discount ? Math.round(subtotal * discount.rate) : 0;
@@ -52,27 +51,36 @@ export function CartSummary({ subtotal, onCheckoutComplete }: CartSummaryProps) 
     setCodeInput("");
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     setIsCheckingOut(true);
-    window.setTimeout(() => {
-      setIsCheckingOut(false);
-      setCheckoutSuccess(true);
-      onCheckoutComplete();
-    }, 1400);
-  };
+    setCheckoutError(null);
 
-  if (checkoutSuccess) {
-    return (
-      <aside className="cart-summary cart-summary--success">
-        <MaterialIcon name="check_circle" className="cart-summary-success-icon" />
-        <h2>سفارش شما ثبت شد!</h2>
-        <p>این یک محیط نمایشی است؛ پرداختی از شما دریافت نشده و سفارش واقعی ثبت نشده است.</p>
-        <Link href="/" className="cart-continue-btn">
-          بازگشت به فروشگاه
-        </Link>
-      </aside>
-    );
-  }
+    try {
+      const response = await fetch("/api/payment/request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: total,
+          description: "سفارش از فروشگاه",
+          callbackUrl: `${window.location.origin}/payment/callback`,
+          orderId: `order-${Date.now()}`,
+        }),
+      });
+
+      const result = (await response.json()) as { success?: boolean; message?: string; redirectUrl?: string };
+
+      if (!response.ok || !result.success || !result.redirectUrl) {
+        throw new Error(result.message ?? "در ایجاد تراکنش مشکلی پیش آمد.");
+      }
+
+      window.location.assign(result.redirectUrl);
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "در ایجاد تراکنش مشکلی پیش آمد.");
+      setIsCheckingOut(false);
+    }
+  };
 
   return (
     <aside className="cart-summary">
@@ -135,6 +143,8 @@ export function CartSummary({ subtotal, onCheckoutComplete }: CartSummaryProps) 
         <strong>{formatRial(total)}</strong>
       </div>
 
+      {checkoutError ? <p className="discount-form-error">{checkoutError}</p> : null}
+
       <button
         type="button"
         className="checkout-btn"
@@ -144,7 +154,7 @@ export function CartSummary({ subtotal, onCheckoutComplete }: CartSummaryProps) 
         {isCheckingOut ? (
           <>
             <span className="spinner" aria-hidden="true" />
-            در حال ثبت سفارش...
+            در حال انتقال به درگاه پرداخت...
           </>
         ) : (
           "ادامه فرآیند خرید"

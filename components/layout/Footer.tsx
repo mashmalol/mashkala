@@ -23,16 +23,13 @@ export function Footer() {
           <MaterialIcon name="call_quality" />
           <div className="support-col-phone">
             <div className="phone">
-              <span className="prefix"> -۹۹ </span>
-              <span className="main-phone">۲۴۹۲۴۹ </span>
+              {/* Replace with your support phone number. */}
+              <span className="prefix" />
+              <span className="main-phone" />
             </div>
-            <div className="descripion">
-              پشتیبانی تلفنی از شنبه تا چهارشنبه، 9:00 الی 16 پنجشنبه 9:00 الی 12:00
-            </div>
+            <div className="descripion">{/* Replace with your support hours. */}</div>
           </div>
-          <div className="address">
-            بوشهر، عالیشهر، فاز یک، بلوار دانشجو، کوچه متقی (پشت فروشگاه امیرکبیر)، پلاک 7
-          </div>
+          <div className="address">{/* Replace with your address. */}</div>
         </div>
         <div className="links-col p-left border-left">
           <div className="links-title">
@@ -70,18 +67,19 @@ export function Footer() {
         </div>
         <div className="e-namad-col border-left">
           <a href="#">
-            <Image src="/images/enamad.png" alt="" width={69} height={100} />
+            <Image src="/images/placeholder.png" alt="" width={69} height={100} />
           </a>
         </div>
         <div className="descriptin-col">
           <div className="descriptin-content">
-            <p className="company-description">فروشگاه اینترنتی امیرکبیر کالا</p>
-            <p className="justify">فروش محصولات گروه آروا، ایران پتک و رونیکس با تخفیف ویژه</p>
+            {/* Replace with your company description. */}
+            <p className="company-description" />
+            <p className="justify" />
           </div>
           <div className="social-media">
             <p className="social-media-text">ما را در شبكه های اجتماعی دنبال کنید</p>
 
-            <a href="#" aria-label="اینستاگرام امیرکبیر کالا">
+            <a href="#" aria-label="اینستاگرام">
               <Image
                 width={48}
                 height={48}

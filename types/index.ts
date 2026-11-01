@@ -1,7 +1,7 @@
 /**
- * Shared domain types for the Amirkabir Kala storefront.
+ * Shared domain types for the Mashkala storefront.
  * Kept intentionally simple (no `any`) since the current data set is static
- * placeholder content mirrored from the original static site.
+ * placeholder content for the storefront.
  */
 
 /** A single hero slide shown in the top image slider. */

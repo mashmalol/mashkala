@@ -27,13 +27,13 @@ export default function HomePage() {
 
       <CategoryGrid title="دسته بندی ها" items={CATEGORY_ITEMS} />
 
-      <PromoBanner href="#" src="/images/banner-discount.jpeg" alt="dis-price" />
+      <PromoBanner href="#" src="/images/placeholder.png" alt="" />
 
-      <FestivalProductSlider row={FESTIVAL_PRODUCT_ROW} offerImage="/images/special-offer.png" />
+      <FestivalProductSlider row={FESTIVAL_PRODUCT_ROW} offerImage="/images/placeholder.png" />
 
       <SliderShowSection rows={SLIDER_SHOW_ROWS} />
 
-      <PromoBanner href="#" src="/images/banner-promo.jpeg" alt="dis-price" />
+      <PromoBanner href="#" src="/images/placeholder.png" alt="" />
 
       <BlogSection title="مطالب اخیر وبلاگ" posts={BLOG_POSTS} />
 

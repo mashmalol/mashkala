@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 
   const post = BLOG_POSTS[index]!;
   return {
-    title: `${post.title} | وبلاگ امیر کبیر کالا`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
       title: post.title,

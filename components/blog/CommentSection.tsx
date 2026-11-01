@@ -10,14 +10,8 @@ interface Comment {
   date: string;
 }
 
-const INITIAL_COMMENTS: Comment[] = [
-  {
-    id: "c1",
-    name: "علی محمدی",
-    text: "مقاله بسیار مفیدی بود، ممنون از توضیحات کامل شما.",
-    date: "۲ روز پیش",
-  },
-];
+/** Seeded with nothing — replace with your own comment source. */
+const INITIAL_COMMENTS: Comment[] = [];
 
 export interface CommentSectionProps {
   articleId: string;

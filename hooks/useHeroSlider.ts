@@ -14,17 +14,18 @@ export function useHeroSlider(slideCount: number) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const goNext = useCallback(() => {
-    setActiveIndex((current) => (current + 1) % slideCount);
+    setActiveIndex((current) => (slideCount > 0 ? (current + 1) % slideCount : 0));
   }, [slideCount]);
 
   const goPrevious = useCallback(() => {
-    setActiveIndex((current) => (current - 1 + slideCount) % slideCount);
+    setActiveIndex((current) => (slideCount > 0 ? (current - 1 + slideCount) % slideCount : 0));
   }, [slideCount]);
 
   useEffect(() => {
+    if (slideCount <= 1) return;
     const interval = setInterval(goNext, AUTO_ADVANCE_MS);
     return () => clearInterval(interval);
-  }, [goNext]);
+  }, [goNext, slideCount]);
 
   return { activeIndex, goNext, goPrevious };
 }

@@ -1,8 +1,8 @@
 {
-  "name": "amirkabir-kala",
+  "name": "mashkala",
   "version": "1.0.0",
   "private": true,
-  "description": "Amirkabir Kala online store - rebuilt with Next.js 16, React and TypeScript",
+  "description": "Mashkala online store - rebuilt with Next.js 16, React and TypeScript",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -35,7 +35,7 @@ export function HeaderTop({
         </button>
         <div className="input-header-logo">
           <Link href="/">
-            <Image src="/images/logo.png" alt="logo" width={88} height={50} priority />
+            <Image src="/images/placeholder.png" alt="logo" width={88} height={50} priority />
           </Link>
         </div>
         <div className="input-header-search">

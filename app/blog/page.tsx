@@ -9,8 +9,7 @@ import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { BLOG_POSTS } from "@/constants/data";
 
 export const metadata: Metadata = {
-  title: "وبلاگ | امیر کبیر کالا",
-  description: "راهنمای خرید و نگهداری ابزارآلات صنعتی، آخرین مطالب و مقالات فروشگاه امیرکبیر کالا",
+  title: "وبلاگ",
 };
 
 export default function BlogListPage() {
@@ -20,8 +19,7 @@ export default function BlogListPage() {
 
       <main className="blog-list-page">
         <div className="blog-list-header">
-          <h1>وبلاگ امیرکبیر کالا</h1>
-          <p>راهنمای خرید، نگهداری و استفاده صحیح از ابزارآلات صنعتی</p>
+          <h1>وبلاگ</h1>
         </div>
 
         <div className="blog-list-grid">
