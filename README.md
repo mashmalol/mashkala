@@ -1,6 +1,6 @@
-# Amirkabir Kala
+# Mashkala
 
-A Persian (RTL) industrial-tools e-commerce storefront, rebuilt from a static HTML/CSS/JS site into a modern, fully-typed **Next.js 16** application — then extended into a complete shopping experience with a cart, blog, authentication, and a polished, accessible UI.
+A Persian (RTL) industrial-tools e-commerce storefront, rebuilt into a modern, fully-typed **Next.js 16** application with a cart, blog, authentication, and a polished, accessible UI.
 
 This is a demo/portfolio project. There is no backend, payment gateway, or real authentication provider — all "functional" flows (checkout, login, comments, newsletter) run entirely client-side with simulated network delays, so the UI/UX can be evaluated end-to-end without any server setup.
 
@@ -50,7 +50,7 @@ No external services, API keys, or environment variables are required.
 ```bash
 # 1. Clone the repository
 git clone <your-repo-url>
-cd amirkabir-kala
+cd mashkala
 
 # 2. Install dependencies
 npm install
