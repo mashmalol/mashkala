@@ -4,8 +4,11 @@ A Persian (RTL) industrial-tools e-commerce storefront, rebuilt into a modern, f
 
 This is a demo/portfolio project. There is no backend, payment gateway, or real authentication provider — all "functional" flows (checkout, login, comments, newsletter) run entirely client-side with simulated network delays, so the UI/UX can be evaluated end-to-end without any server setup.
 
----
+## UI preview
 
+![Mashkala storefront UI preview](./public/images/ui-preview.png)
+
+---
 
 ## Features
 
