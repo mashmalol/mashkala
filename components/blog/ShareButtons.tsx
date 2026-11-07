@@ -5,6 +5,9 @@ import { MaterialIcon } from "@/components/ui/MaterialIcon";
 
 export interface ShareButtonsProps {
   title: string;
+  /** Canonical, absolute URL of the article. Passed in from the server so
+   * the share links are identical during SSR and hydration. */
+  url: string;
 }
 
 /** `navigator.share` only exists in the browser, so read it as a client-only
@@ -13,7 +16,7 @@ const subscribeToNothing = () => () => {};
 const getCanNativeShare = () => typeof navigator !== "undefined" && typeof navigator.share === "function";
 const getCanNativeShareOnServer = () => false;
 
-export function ShareButtons({ title }: ShareButtonsProps) {
+export function ShareButtons({ title, url }: ShareButtonsProps) {
   const [isCopied, setIsCopied] = useState(false);
   const canNativeShare = useSyncExternalStore(
     subscribeToNothing,
@@ -21,10 +24,7 @@ export function ShareButtons({ title }: ShareButtonsProps) {
     getCanNativeShareOnServer,
   );
 
-  const getShareUrl = () => (typeof window === "undefined" ? "" : window.location.href);
-
   const handleNativeShare = async () => {
-    const url = getShareUrl();
     if (navigator.share) {
       try {
         await navigator.share({ title, url });
@@ -36,7 +36,7 @@ export function ShareButtons({ title }: ShareButtonsProps) {
 
   const handleCopyLink = async () => {
     try {
-      await navigator.clipboard.writeText(getShareUrl());
+      await navigator.clipboard.writeText(url);
       setIsCopied(true);
       window.setTimeout(() => setIsCopied(false), 2000);
     } catch {
@@ -44,9 +44,9 @@ export function ShareButtons({ title }: ShareButtonsProps) {
     }
   };
 
-  const telegramHref = `https://t.me/share/url?url=${encodeURIComponent(getShareUrl())}&text=${encodeURIComponent(title)}`;
-  const twitterHref = `https://twitter.com/intent/tweet?url=${encodeURIComponent(getShareUrl())}&text=${encodeURIComponent(title)}`;
-  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title} ${getShareUrl()}`)}`;
+  const telegramHref = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+  const twitterHref = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`;
 
   return (
     <div className="share-buttons">

@@ -14,7 +14,7 @@ export function AuthCard({ title, subtitle, children, footer }: AuthCardProps) {
     <div className="auth-page">
       <div className="auth-card">
         <Link href="/" className="auth-card-brand">
-          <Image src="/images/placeholder.png" alt="" width={80} height={45} />
+          <Image src="/images/logo-mark.png" alt="مشکله" width={45} height={45} style={{ objectFit: "contain" }} />
         </Link>
         <h1>{title}</h1>
         <p className="auth-card-subtitle">{subtitle}</p>

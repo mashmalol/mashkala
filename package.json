@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "import:images": "node scripts/import-product-images.mjs",
+    "import:ui": "node scripts/import-ui-assets.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",

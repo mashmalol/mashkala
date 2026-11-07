@@ -20,20 +20,30 @@ import {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="landing">
       <Header />
 
       <HeroSlider slides={HERO_SLIDES} />
 
       <CategoryGrid title="دسته بندی ها" items={CATEGORY_ITEMS} />
 
-      <PromoBanner href="#" src="/images/placeholder.png" alt="" />
+      <PromoBanner
+        href="#"
+        src="/images/promo-1.jpg"
+        alt="قوطی‌های طرح‌دار مشکله زیر نور فانوس در شب شرقی"
+        objectPosition="center 72%"
+      />
 
-      <FestivalProductSlider row={FESTIVAL_PRODUCT_ROW} offerImage="/images/placeholder.png" />
+      <FestivalProductSlider row={FESTIVAL_PRODUCT_ROW} offerImage="/images/festival-tile.jpg" />
 
       <SliderShowSection rows={SLIDER_SHOW_ROWS} />
 
-      <PromoBanner href="#" src="/images/placeholder.png" alt="" />
+      <PromoBanner
+        href="#"
+        src="/images/promo-2.jpg"
+        alt="انار، لیمو و نعنا در حباب‌های نوشیدنی گازدار"
+        objectPosition="center 45%"
+      />
 
       <BlogSection title="مطالب اخیر وبلاگ" posts={BLOG_POSTS} />
 
@@ -44,6 +54,6 @@ export default function HomePage() {
       <BottomNav />
 
       <BackToTopButton />
-    </>
+    </div>
   );
 }

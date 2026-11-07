@@ -15,7 +15,7 @@ import { PrevNextNav } from "@/components/blog/PrevNextNav";
 import { RelatedArticles } from "@/components/blog/RelatedArticles";
 import { CommentSection } from "@/components/blog/CommentSection";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
-import { BLOG_POSTS } from "@/constants/data";
+import { BLOG_POSTS, SITE_URL } from "@/constants/data";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -92,7 +92,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <div className="blog-detail-body">
             <ArticleContent content={post.content} />
             <TagList tags={post.tags} />
-            <ShareButtons title={post.title} />
+            <ShareButtons title={post.title} url={`${SITE_URL}/blog/${post.slug}`} />
           </div>
         </div>
 

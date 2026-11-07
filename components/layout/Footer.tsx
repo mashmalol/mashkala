@@ -67,7 +67,7 @@ export function Footer() {
         </div>
         <div className="e-namad-col border-left">
           <a href="#">
-            <Image src="/images/placeholder.png" alt="" width={69} height={100} />
+            <Image src="/images/e-namad.png" alt="نماد اعتماد الکترونیکی" width={69} height={100} style={{ objectFit: "contain" }} />
           </a>
         </div>
         <div className="descriptin-col">
@@ -79,12 +79,45 @@ export function Footer() {
           <div className="social-media">
             <p className="social-media-text">ما را در شبكه های اجتماعی دنبال کنید</p>
 
-            <a href="#" aria-label="اینستاگرام">
+            <a
+              href="https://www.instagram.com/3dchan3d/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="اینستاگرام سازنده"
+            >
               <Image
                 width={48}
                 height={48}
                 src="https://img.icons8.com/fluency/48/instagram-new.png"
-                alt="instagram-new"
+                alt="اینستاگرام"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mashmalol/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="لینکدین سازنده"
+            >
+              <Image
+                width={48}
+                height={48}
+                src="https://img.icons8.com/fluency/48/linkedin.png"
+                alt="لینکدین"
+              />
+            </a>
+
+            <a
+              href="https://github.com/mashmalol"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="گیت‌هاب سازنده"
+            >
+              <Image
+                width={48}
+                height={48}
+                src="https://img.icons8.com/fluency/48/github.png"
+                alt="گیت‌هاب"
               />
             </a>
           </div>

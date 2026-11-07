@@ -78,6 +78,7 @@ ul {
 .input-header .input-header-logo img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .input-header-right {
@@ -527,7 +528,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 190px;
+  width: 180px;
   margin: 20px 5px;
 }
 .category-item p {
@@ -541,6 +542,7 @@ ul {
 .category-item-pic img {
   max-width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .banner {
@@ -693,6 +695,21 @@ ul {
 }
 .procuct-slider-procuct .procuct-slider-procuct-content .product-price {
   margin-top: auto;
+}
+
+/* Shared short description shown on product cards. */
+.product-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.9;
+  color: #7a7a7a;
+  text-align: center;
+  padding: 0 10px;
+  margin: 0 0 6px;
 }
 
 .product-price {
@@ -1099,7 +1116,12 @@ ul {
   align-items: center;
 }
 .why-us .why-us-items .why-us-item img {
-  width: 70px;
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  background: #121836;
+  border-radius: 50%;
+  padding: 10px;
   margin-bottom: 20px;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -3104,6 +3126,9 @@ h3.article-heading {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.auth-card-brand img {
+  object-fit: contain;
 }
 .auth-card-brand {
   margin-bottom: 18px;

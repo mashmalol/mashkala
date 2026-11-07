@@ -9,22 +9,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   icons: {
-    icon: "/chrome/throbber-a.svg",
-    shortcut: "/chrome/throbber-a.svg",
-    apple: "/images/placeholder.png",
+    icon: "/images/icon.png",
+    shortcut: "/images/icon.png",
+    apple: "/images/icon.png",
   },
   openGraph: {
     title: SITE_NAME,
     url: SITE_URL,
     siteName: SITE_NAME,
-    images: [{ url: "/images/placeholder.png" }],
+    images: [{ url: "/images/og.jpg", width: 1200, height: 630 }],
     locale: "fa_IR",
     type: "website",
   },
   twitter: {
     card: "summary",
     title: SITE_NAME,
-    images: ["/images/placeholder.png"],
+    images: ["/images/og.jpg"],
   },
 };
 

@@ -565,7 +565,7 @@ body {
 
 .browser-viewport .input-header-logo {
   flex: none;
-  width: 92px;
+  width: 52px;
   height: 44px;
   background: var(--chrome-field);
   border: 1px solid;
@@ -844,7 +844,7 @@ body {
 }
 
 .browser-viewport .banner {
-  height: 150px;
+  height: 360px;
   overflow: hidden;
   margin: 14px 20px;
 }
@@ -1669,5 +1669,28 @@ body {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+  }
+}
+
+/* Hero banners: keep the headline (top of the artwork) in frame. */
+.browser-viewport .landing .slider-container .slide img {
+  object-position: center top;
+}
+
+.browser-viewport .landing .slider-container {
+  height: 480px;
+}
+
+@media (max-width: 750px) {
+  .browser-viewport .landing .slider-container {
+    height: 240px;
+  }
+}
+
+
+/* Homepage promo banners carry full key art, so give them room to breathe. */
+@media (max-width: 750px) {
+  .browser-viewport .banner {
+    height: 190px;
   }
 }

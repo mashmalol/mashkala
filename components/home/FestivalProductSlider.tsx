@@ -47,6 +47,7 @@ export function FestivalProductSlider({ row, offerImage }: FestivalProductSlider
               </div>
               <div className="procuct-slider-procuct-content">
                 <p>{product.title}</p>
+                <span className="product-description">{product.description}</span>
                 <ProductPriceBlock product={product} />
               </div>
             </div>

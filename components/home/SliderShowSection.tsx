@@ -33,6 +33,7 @@ function SliderShowRow({ row }: { row: ProductRow }) {
             </div>
             <div className="slider-show-product-content">
               <p>{product.title}</p>
+              <span className="product-description">{product.description}</span>
               <ProductPriceBlock product={product} />
             </div>
           </div>

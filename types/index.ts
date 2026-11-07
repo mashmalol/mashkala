@@ -55,6 +55,8 @@ export interface ProductPrice {
 export interface Product {
   id: string;
   title: string;
+  /** Short Persian marketing copy shown under the title on product cards. */
+  description: string;
   image: string;
   price: ProductPrice;
   /** Real intrinsic dimensions of `image`, used for next/image sizing. */
