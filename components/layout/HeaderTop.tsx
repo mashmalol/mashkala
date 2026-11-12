@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { ShoppingCartPreview } from "@/components/layout/ShoppingCartPreview";
+import { SiteSearch } from "@/components/layout/SiteSearch";
 import { useCart } from "@/contexts/CartContext";
 
 export interface HeaderTopProps {
@@ -21,6 +23,19 @@ export function HeaderTop({
   onMenuButtonClick,
 }: HeaderTopProps) {
   const { itemCount } = useCart();
+  const [isBumping, setIsBumping] = useState(false);
+  const previousCount = useRef(itemCount);
+
+  // Briefly pop the badge whenever something is added to the cart.
+  useEffect(() => {
+    if (itemCount > previousCount.current) {
+      setIsBumping(true);
+      const timeout = window.setTimeout(() => setIsBumping(false), 450);
+      previousCount.current = itemCount;
+      return () => window.clearTimeout(timeout);
+    }
+    previousCount.current = itemCount;
+  }, [itemCount]);
 
   return (
     <div className="input-header">
@@ -39,15 +54,7 @@ export function HeaderTop({
           </Link>
         </div>
         <div className="input-header-search">
-          <input
-            type="search"
-            id="site-search-input"
-            placeholder="جستوجو کنید"
-            aria-label="جستوجو کنید"
-          />
-          <div className="input-header-search-logo">
-            <MaterialIcon name="search" />
-          </div>
+          <SiteSearch />
         </div>
       </div>
       <div className="input-header-left">
@@ -67,7 +74,9 @@ export function HeaderTop({
           onFocus={onCartMouseEnter}
           onBlur={onCartMouseLeave}
         >
-          <div className="input-header-btn-buy-num">{itemCount}</div>
+          <div className={`input-header-btn-buy-num${isBumping ? " input-header-btn-buy-num--bump" : ""}`}>
+            {itemCount}
+          </div>
           <MaterialIcon name="shopping_cart" />
         </Link>
 

@@ -2,16 +2,24 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const AUTO_ADVANCE_MS = 3000;
+const AUTO_ADVANCE_MS = 5000;
 
 /**
- * Reproduces the original hero slider behaviour: the active slide advances
- * automatically every 3 seconds, and can also be moved forward/backward
- * manually. The manual controls and the automatic timer both operate on the
- * same index, exactly like the original `setInterval` + click handlers.
+ * Drives the hero slider: a gentle 5s autoplay that pauses while the pointer
+ * rests on the slider (or the user is on a dot), plus manual next/previous
+ * and jump-to-slide controls.
  */
 export function useHeroSlider(slideCount: number) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (slideCount <= 0) return;
+      setActiveIndex(((index % slideCount) + slideCount) % slideCount);
+    },
+    [slideCount],
+  );
 
   const goNext = useCallback(() => {
     setActiveIndex((current) => (slideCount > 0 ? (current + 1) % slideCount : 0));
@@ -22,10 +30,10 @@ export function useHeroSlider(slideCount: number) {
   }, [slideCount]);
 
   useEffect(() => {
-    if (slideCount <= 1) return;
+    if (slideCount <= 1 || isPaused) return;
     const interval = setInterval(goNext, AUTO_ADVANCE_MS);
     return () => clearInterval(interval);
-  }, [goNext, slideCount]);
+  }, [goNext, isPaused, slideCount]);
 
-  return { activeIndex, goNext, goPrevious };
+  return { activeIndex, goNext, goPrevious, goTo, setPaused: setIsPaused };
 }

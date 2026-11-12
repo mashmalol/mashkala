@@ -65,6 +65,9 @@ export interface Product {
   /** Optional selected variant/option shown on the product card and cart
    * line item, e.g. "رنگ: قرمز" or "سایز: بزرگ". */
   option?: string;
+  /** Catalogue collection the product belongs to, when it is not described by
+   * a homepage row. Currently only the art-can wave uses `"new"`. */
+  collection?: string;
 }
 
 /** A horizontally-scrolling row of products with its own heading/link. */

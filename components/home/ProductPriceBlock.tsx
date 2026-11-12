@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { useCart } from "@/contexts/CartContext";
+import { toastStore } from "@/lib/toast-store";
 import type { Product } from "@/types";
 
 export interface ProductPriceBlockProps {
@@ -28,6 +29,12 @@ export function ProductPriceBlock({ product }: ProductPriceBlockProps) {
   const handleAdd = () => {
     addItem(product);
     setJustAdded(true);
+    toastStore.show({
+      title: "به سبد اضافه شد",
+      message: product.title,
+      href: "/cart",
+      actionLabel: "مشاهده سبد",
+    });
     window.setTimeout(() => setJustAdded(false), 1200);
   };
 

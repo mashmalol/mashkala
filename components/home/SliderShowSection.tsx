@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { ProductPriceBlock } from "@/components/home/ProductPriceBlock";
 import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
@@ -23,16 +24,18 @@ function SliderShowRow({ row }: { row: ProductRow }) {
       <div className="slider-show-products" ref={ref}>
         {row.products.map((product) => (
           <div className="slider-show-product" key={product.id}>
-            <div className="slider-show-product-pic">
+            <Link href={`/product/${product.id}`} className="slider-show-product-pic">
               <Image
                 src={product.image}
-                alt="product"
+                alt={product.title}
                 width={product.imageWidth}
                 height={product.imageHeight}
               />
-            </div>
+            </Link>
             <div className="slider-show-product-content">
-              <p>{product.title}</p>
+              <Link href={`/product/${product.id}`} className="slider-show-product-title">
+                {product.title}
+              </Link>
               <span className="product-description">{product.description}</span>
               <ProductPriceBlock product={product} />
             </div>

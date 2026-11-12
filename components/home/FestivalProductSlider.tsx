@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { ProductPriceBlock } from "@/components/home/ProductPriceBlock";
 import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
@@ -21,7 +22,7 @@ export function FestivalProductSlider({ row, offerImage }: FestivalProductSlider
   const { ref, scrollBy } = useHorizontalScroll<HTMLDivElement>();
 
   return (
-    <section className="procuct-sliders">
+    <section className="procuct-sliders" id="festival">
       <div className="procuct-slider" ref={ref}>
         <div className="procuct-slider-item">
           <h2>{row.title}</h2>
@@ -29,14 +30,16 @@ export function FestivalProductSlider({ row, offerImage }: FestivalProductSlider
             <Image src={offerImage} alt="" fill sizes="150px" style={{ objectFit: "cover" }} />
           </a>
           <div className="procuct-slider-item-text">
-            <p>مشاهده بیشتر</p>
-            <MaterialIcon name="chevron_left" />
+            <Link href={row.moreHref}>
+              <p>مشاهده بیشتر</p>
+              <MaterialIcon name="chevron_left" />
+            </Link>
           </div>
         </div>
         <div className="procuct-slider-procucts">
           {row.products.map((product) => (
             <div className="procuct-slider-procuct" key={product.id}>
-              <div className="procuct-slider-procuct-pic">
+              <Link href={`/product/${product.id}`} className="procuct-slider-procuct-pic">
                 <Image
                   src={product.image}
                   alt={product.title}
@@ -44,9 +47,11 @@ export function FestivalProductSlider({ row, offerImage }: FestivalProductSlider
                   sizes="190px"
                   style={{ objectFit: "cover" }}
                 />
-              </div>
+              </Link>
               <div className="procuct-slider-procuct-content">
-                <p>{product.title}</p>
+                <Link href={`/product/${product.id}`} className="procuct-slider-procuct-title">
+                  {product.title}
+                </Link>
                 <span className="product-description">{product.description}</span>
                 <ProductPriceBlock product={product} />
               </div>

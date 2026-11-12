@@ -25,16 +25,110 @@ export const SITE_NAME = "Mashkala";
 export const SITE_URL = "http://localhost:3000";
 
 /** Short promotional links shown in the thin top row of the main menu. */
-export const TOP_MENU_LINKS: NavLink[] = [];
+export const TOP_MENU_LINKS: NavLink[] = [
+  { id: "festival-promo", title: "جشنواره تخفیفی", href: "/#festival" },
+];
 
 /** The full primary navigation, used in both the desktop menu bar and the
  * mobile slide-in drawer. The "دسته بندی ها" trigger itself is rendered
  * separately (it opens the flyout in `CategoryDropdown`), so it isn't
  * repeated in this list. */
-export const MAIN_NAV_LINKS: NavLink[] = [];
+export const MAIN_NAV_LINKS: NavLink[] = [
+  { id: "home", title: "خانه", href: "/", icon: "home" },
+  { id: "products", title: "محصولات", href: "/products", icon: "local_drink" },
+  { id: "blog", title: "وبلاگ", href: "/blog", icon: "article" },
+  { id: "contact", title: "تماس با ما", href: "#main-footer", icon: "support_agent" },
+];
 
 /** Categories flyout menu (supports one nested level via `children`). */
-export const CATEGORY_NAV_LINKS: CategoryNavLink[] = [];
+export const CATEGORY_NAV_LINKS: CategoryNavLink[] = [
+  {
+    id: "cat-new",
+    title: "کلکسیون جدید",
+    href: "/products?cat=new",
+    icon: "new_releases",
+    children: [
+      { id: "new-cyber", title: "سری سایبری", href: "/product/cyber-risky" },
+      { id: "new-eye", title: "شب‌های چشم", href: "/product/eye-borun" },
+      { id: "new-pigeon", title: "تماشای شب", href: "/product/pigeon-classic" },
+      { id: "new-swim", title: "شنا در رویا", href: "/product/swim-sobh" },
+      { id: "new-cloud", title: "ابر و باد", href: "/product/cloud-tar" },
+      { id: "new-saye", title: "سایه و لاله", href: "/product/saye-derakht" },
+      { id: "new-frog", title: "وادی قورباغه", href: "/product/frog-mint" },
+    ],
+  },
+  {
+    id: "cat-fruit",
+    title: "نوشیدنی‌های میوه‌ای",
+    href: "/products?cat=fruit",
+    icon: "local_drink",
+    children: [
+      { id: "fruit-atash", title: "آتش (انار)", href: "/product/atash" },
+      { id: "fruit-firooze", title: "فیروزه (سیب سبز)", href: "/product/firooze" },
+      { id: "fruit-nove", title: "نوه (انبه)", href: "/product/nove" },
+      { id: "fruit-golshan", title: "گلشن", href: "/product/golshan" },
+    ],
+  },
+  {
+    id: "cat-modern",
+    title: "خط مدرن",
+    href: "/products?cat=modern",
+    icon: "auto_awesome",
+    children: [
+      { id: "modern-tala", title: "طلا", href: "/product/tala" },
+      { id: "modern-sabz", title: "سبز", href: "/product/sabz" },
+      { id: "modern-abi", title: "آبی", href: "/product/abi" },
+      { id: "modern-siah", title: "سیاه", href: "/product/siah" },
+    ],
+  },
+  {
+    id: "cat-classic",
+    title: "کلاسیک و خاص",
+    href: "/products?cat=classic",
+    icon: "history",
+    children: [
+      { id: "classic-azar", title: "آذر", href: "/product/azar" },
+      { id: "classic-zarin", title: "زرین", href: "/product/zarin" },
+      { id: "classic-nasim", title: "نسیم (کلاسیک)", href: "/product/nasim-classic" },
+      { id: "classic-bahar", title: "بهار", href: "/product/bahar" },
+    ],
+  },
+  {
+    id: "cat-night",
+    title: "طرح‌های هنری (شبگرد)",
+    href: "/products?cat=night",
+    icon: "dark_mode",
+    children: [
+      { id: "night-moj", title: "موج شب", href: "/product/shabgard-moj" },
+      { id: "night-zomorrod", title: "شب زمرد", href: "/product/shabgard-zomorrod" },
+      { id: "night-sarv", title: "سرو و ماه", href: "/product/shabgard-sarv" },
+      { id: "night-niloofar", title: "نیلوفر شب", href: "/product/shabgard-niloofar" },
+    ],
+  },
+  {
+    id: "cat-cola",
+    title: "کولا تیره",
+    href: "/products?cat=dark-cola",
+    icon: "coffee",
+    children: [
+      { id: "cola-zarin", title: "زرین", href: "/product/zarin-cola" },
+      { id: "cola-tiz", title: "تیز", href: "/product/tiz" },
+      { id: "cola-minimal", title: "مینیمال", href: "/product/minimal" },
+      { id: "cola-helal", title: "هلال", href: "/product/helal" },
+    ],
+  },
+  {
+    id: "cat-candle",
+    title: "سری کندل",
+    href: "/products?cat=candle",
+    icon: "trending_up",
+    children: [
+      { id: "candle-1", title: "کندل (روند صعودی)", href: "/product/kandel-1" },
+      { id: "candle-3", title: "کندل (بازار)", href: "/product/kandel-3" },
+      { id: "candle-5", title: "کندل (گرافیک قوی)", href: "/product/kandel-5" },
+    ],
+  },
+];
 
 /** Slides for the homepage hero slider. */
 export const HERO_SLIDES: HeroSlide[] = [
@@ -61,7 +155,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "classic",
     title: "کلاسیک",
     image: "/images/categories/classic.jpg",
-    href: "#",
+    href: "/products?cat=classic",
     width: 600,
     height: 600,
   },
@@ -69,7 +163,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "fruit",
     title: "میوه‌ای",
     image: "/images/categories/fruit.jpg",
-    href: "#",
+    href: "/products?cat=fruit",
     width: 600,
     height: 600,
   },
@@ -77,7 +171,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "cola",
     title: "کولا تیره",
     image: "/images/categories/cola.jpg",
-    href: "#",
+    href: "/products?cat=dark-cola",
     width: 600,
     height: 600,
   },
@@ -85,7 +179,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "citrus",
     title: "لیمو و مرکبات",
     image: "/images/categories/citrus.jpg",
-    href: "#",
+    href: "/products?cat=fruit",
     width: 600,
     height: 600,
   },
@@ -93,7 +187,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "art",
     title: "طرح‌های هنری",
     image: "/images/categories/art.jpg",
-    href: "#",
+    href: "/products?cat=new",
     width: 600,
     height: 600,
   },
@@ -101,7 +195,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: "gift",
     title: "پکیج هدیه",
     image: "/images/categories/gift.jpg",
-    href: "#",
+    href: "/products?cat=candle",
     width: 600,
     height: 600,
   },
@@ -113,8 +207,16 @@ function toman(value: number): string {
 }
 
 /** Builds a product entry from its id, copy and price; the image is derived from the id.
- * `priceToman` is the shelf price in Toman (stored as Rial in `price.amount`). */
-function can(id: string, title: string, description: string, priceToman = 91): Product {
+ * `priceToman` is the shelf price in Toman (stored as Rial in `price.amount`).
+ * `collection` tags a product as belonging to a catalogue collection whose
+ * membership is wider than any single homepage row. */
+function can(
+  id: string,
+  title: string,
+  description: string,
+  priceToman = 91,
+  collection?: Product["collection"],
+): Product {
   return {
     id,
     title,
@@ -123,6 +225,7 @@ function can(id: string, title: string, description: string, priceToman = 91): P
     imageWidth: 780,
     imageHeight: 1170,
     price: { current: toman(priceToman), amount: priceToman * 10 },
+    ...(collection ? { collection } : {}),
   };
 }
 
@@ -465,6 +568,639 @@ export const PRODUCTS: Product[] = [
     "کولا با گازِ سبک و طعمی تمیز، در قوطی مشکی با فلش صعودی؛ ساده، مدرن و رو به جلو.",
     130,
   ),
+
+
+  // --- Art-can collection (second wave) -------------------------------
+  can(
+    "cyber-risky",
+    "نوشابه گازدار ریسکی",
+    "چهرهٔ نئونی و مدارهای آبی روی قوطی مشکی؛ طعم توت سیاه با گاز تیز برای شب‌های بی‌خوابی.",
+    189,
+    "new",
+  ),
+  can(
+    "cyber-replica",
+    "نوشابه گازدار ریپلیکا",
+    "حروف نئونی بنفش و چهرهٔ دیجیتال؛ کولای تیره با رایحهٔ وانیل و پایانی فلزی.",
+    179,
+    "new",
+  ),
+  can(
+    "cyber-venom",
+    "نوشابه گازدار ونوم",
+    "بنفش برقی، خطوط سمی و چهرهٔ انیمه‌ای؛ طعم انگور سیاه با گاز پرقدرت.",
+    175,
+    "new",
+  ),
+  can(
+    "cyber-aura",
+    "نوشابه گازدار آئورا",
+    "هالهٔ بنفش و متن ژاپنی روی زمینهٔ تیره؛ نوشیدنی گازدار با طعم گیلاس شب.",
+    169,
+    "new",
+  ),
+  can(
+    "cyber-signal",
+    "نوشابه گازدار سیگنال",
+    "سبز نئونی روی مشکی، پرترهٔ سایبری و بارکد؛ کولای سبز با ته‌مایهٔ لیمو.",
+    165,
+    "new",
+  ),
+  can(
+    "cyber-soda",
+    "نوشابه گازدار سایبر سودا",
+    "قوطی آبی تیره با چهرهٔ سایبر و نوشتهٔ ژاپنی؛ طعم خنک نعنا و لیمو.",
+    189,
+    "new",
+  ),
+  can(
+    "cyber-cola",
+    "نوشابه گازدار سایبر کولا",
+    "نمای شهری نئونی و خطوط مدار؛ کولای کلاسیک با رایحهٔ دود و کارامل.",
+    185,
+    "new",
+  ),
+  can(
+    "cyber-red",
+    "نوشابه گازدار اتصال سرخ",
+    "قرمز آتشین و چهرهٔ سایبری؛ طعم انار تند با گاز درشت.",
+    175,
+    "new",
+  ),
+  can(
+    "cyber-ab",
+    "نوشابه گازدار اتصال آبی",
+    "آبی فیروزه‌ای و مدارهای روشن؛ نوشیدنی گازدار با طعم سیب سبز.",
+    165,
+    "new",
+  ),
+  can(
+    "cyber-mah",
+    "نوشابه گازدار سایبر ماه",
+    "ماه کامل پشت چهرهٔ دیجیتال؛ کولای تیره با پایانی خنک و کمی تلخ.",
+    179,
+    "new",
+  ),
+  can(
+    "cyber-blue",
+    "نوشابه گازدار سایبر آبی",
+    "آبی الکتریکی و پرترهٔ نیمه‌پیدا؛ طعم بلوبری با گاز ریز.",
+    169,
+    "new",
+  ),
+  can(
+    "cyber-kiroshi",
+    "نوشابه گازدار کیروشی",
+    "زرد نئونی و چهرهٔ سبز؛ نوشیدنی گازدار با طعم مرکبات و زنجبیل.",
+    189,
+    "new",
+  ),
+  can(
+    "eye-borun",
+    "نوشابه گازدار ای برون",
+    "خوشنویسی طلایی روی گرداب آبی؛ طعم انار و گل‌محمدی با گاز ملایم.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-cheshm",
+    "نوشابه گازدار نگاه افتاده",
+    "نگاه‌های حلزونی و خط طلایی؛ نوشیدنی گازدار با طعم توت‌فرنگی.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-gardab",
+    "نوشابه گازدار گرداب چشم",
+    "گرداب آبی و طلایی با متن خوشنویسی؛ طعم زغال‌اخته و یاس.",
+    155,
+    "new",
+  ),
+  can(
+    "eye-shab",
+    "نوشابه گازدار چشم شب",
+    "ماه و چشم‌های ستاره‌ای روی سرمه‌ای؛ کولای شب با رایحهٔ دارچین.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-zarrin",
+    "نوشابه گازدار چشم زرین",
+    "خوشنویسی زرین روی زمینهٔ طلایی؛ نوشیدنی گازدار با طعم عسل و لیمو.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-helal",
+    "نوشابه گازدار هلال ابر",
+    "هلال و ابر در گرداب آبی؛ طعم به و هل با گاز نرم.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-oqab",
+    "نوشابه گازدار چشم عقاب",
+    "چشم‌های زرین در شب آبی؛ نوشیدنی گازدار با طعم انجیر و توت.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-sorme",
+    "نوشابه گازدار سرمهٔ چشم",
+    "خط سرمه‌ای و نگاه طلایی؛ کولای تیره با ته‌مایهٔ پرتقال.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-mast",
+    "نوشابه گازدار چشم مست",
+    "هلال ابر و چشم مست روی مشکی؛ طعم انگور و رازیانه.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-atash",
+    "نوشابه گازدار شب آتش",
+    "شعله‌های طلایی روی آبی شب؛ نوشیدنی گازدار با طعم آلبالو.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-tala",
+    "نوشابه گازدار زرین‌شب",
+    "زمینهٔ نارنجی و خوشنویسی طلا؛ طعم زعفران و پرتقال.",
+    175,
+    "new",
+  ),
+  can(
+    "eye-shabgard",
+    "نوشابه گازدار شبگرد آینه",
+    "آینهٔ آبی و ستاره‌های زرین؛ کولای شبگرد با پایانی خنک.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-share",
+    "نوشابه گازدار شرارهٔ زرین",
+    "شراره‌های طلایی روی نارنجی گرم؛ نوشیدنی گازدار با طعم هلو.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-talaei",
+    "نوشابه گازدار طلای شب",
+    "ابر زرین و چشم‌های درخشان؛ طعم کارامل و نمک دریایی.",
+    175,
+    "new",
+  ),
+  can(
+    "eye-negin",
+    "نوشابه گازدار نگین شب",
+    "نگین آبی و خطوط طلایی؛ نوشیدنی گازدار با طعم شاه‌توت.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-saye",
+    "نوشابه گازدار سایهٔ زرین",
+    "سایه‌های چشم روی طلایی؛ کولای ملایم با رایحهٔ وانیل.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-aftab",
+    "نوشابه گازدار آفتاب زرین",
+    "آفتاب زرین در گرداب آبی؛ طعم پرتقال و هویج.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-mon",
+    "نوشابه گازدار ماه شبگرد",
+    "ماه کامل و نگاه خوشنویسی؛ نوشیدنی گازدار با طعم لیمو و نعنا.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-halal",
+    "نوشابه گازدار هلال مست",
+    "هلال و ستاره روی سرمه‌ای؛ طعم انار و گلاب.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-setare",
+    "نوشابه گازدار ستارهٔ شب",
+    "ستارهٔ طلایی و متن زرین؛ نوشیدنی گازدار با طعم توت‌فرنگی و ریحان.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-kardar",
+    "نوشابه گازدار نقش زرین",
+    "خوشنویسی زرین روی آبی؛ کولای تیره با ته‌مایهٔ گیلاس.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-shabgard-2",
+    "نوشابه گازدار شبگرد نگاه",
+    "نگاه‌های زرین در شب؛ نوشیدنی گازدار با طعم زغال‌اخته.",
+    165,
+    "new",
+  ),
+  can(
+    "eye-helal-shab",
+    "نوشابه گازدار هلال شب",
+    "هلال ابر روی آبی تیره؛ طعم به و دارچین.",
+    169,
+    "new",
+  ),
+  can(
+    "eye-tamas",
+    "نوشابه گازدار نگاه",
+    "موج آبی و خط زرین؛ نوشیدنی گازدار با طعم سیب و گلابی.",
+    159,
+    "new",
+  ),
+  can(
+    "eye-ghalate",
+    "نوشابه گازدار سرمهٔ شب",
+    "چشم‌های زرین روی سرمه؛ کولای تیره با رایحهٔ فندق.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-pink",
+    "نوشابه گازدار تماشای شب (صورتی)",
+    "کبوتر سرخ روی قوطی صورتی؛ نوشیدنی گازدار با طعم گریپ‌فروت و گل.",
+    159,
+    "new",
+  ),
+  can(
+    "pigeon-classic",
+    "نوشابه گازدار تماشای شب",
+    "کبوتر تمام‌قد و متن «تماشای شب»؛ کولای صورتی با ته‌مایهٔ توت.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-night",
+    "نوشابه گازدار تمام شب",
+    "طرح کبوتر و حروف درشت ALL NIGHT LONG؛ نوشیدنی گازدار با طعم آلبالو.",
+    169,
+    "new",
+  ),
+  can(
+    "pigeon-pink-2",
+    "نوشابه گازدار شب بلند",
+    "کبوتر روی زمینهٔ مرجانی؛ طعم گریپ‌فروت صورتی.",
+    159,
+    "new",
+  ),
+  can(
+    "pigeon-coral",
+    "نوشابه گازدار مرجان شب",
+    "قوطی مرجانی و کبوتر نشسته؛ نوشیدنی گازدار با طعم هندوانه.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-tala",
+    "نوشابه گازدار تماشای شب طلایی",
+    "حروف طلایی و کبوتر برجسته؛ کولای کاراملی.",
+    175,
+    "new",
+  ),
+  can(
+    "pigeon-sorkh",
+    "نوشابه گازدار شب سرخ",
+    "کبوتر سیاه روی صورتی تیره؛ طعم انار و فلفل صورتی.",
+    169,
+    "new",
+  ),
+  can(
+    "pigeon-festival",
+    "نوشابه گازدار جشن شب",
+    "طرح پوستری ALL NIGHT LONG؛ نوشیدنی گازدار با طعم توت‌فرنگی.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-simin",
+    "نوشابه گازدار تماشای شب سیمین",
+    "کبوتر نقره‌ای روی بدنهٔ صورتی؛ کولای ملایم با وانیل.",
+    159,
+    "new",
+  ),
+  can(
+    "pigeon-rose",
+    "نوشابه گازدار تماشای شب رز",
+    "کبوتر و متن خوشنویسی؛ نوشیدنی گازدار با طعم گل رز و لیمو.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-royal",
+    "نوشابه گازدار شب سلطنتی",
+    "کبوتر درشت و حروف بلند؛ کولای تیره با رایحهٔ دود.",
+    169,
+    "new",
+  ),
+  can(
+    "pigeon-pink-3",
+    "نوشابه گازدار تماشای شب صورتی",
+    "قوطی صورتی روشن و کبوتر سیاه؛ طعم تمشک.",
+    159,
+    "new",
+  ),
+  can(
+    "pigeon-mah",
+    "نوشابه گازدار شب مهتاب",
+    "کبوتر زیر ماه روی مرجانی؛ نوشیدنی گازدار با طعم هلو.",
+    165,
+    "new",
+  ),
+  can(
+    "pigeon-abi",
+    "نوشابه گازدار تماشای شب آبی",
+    "کبوتر سیاه روی زمینهٔ آبی؛ کولای تیره با پایانی خنک.",
+    169,
+    "new",
+  ),
+  can(
+    "swim-sabz",
+    "نوشابه گازدار شناگر سبز",
+    "شناگر در موج سبز؛ نوشیدنی گازدار با طعم خیار و نعنا.",
+    149,
+    "new",
+  ),
+  can(
+    "swim-sobh",
+    "نوشابه گازدار شنای صبح",
+    "صبح سبز و شناگر؛ طعم لیمو و برگ‌های تازه.",
+    149,
+    "new",
+  ),
+  can(
+    "swim-aqua",
+    "نوشابه گازدار شنا",
+    "خط ساده و شناگر روی سبز؛ نوشیدنی گازدار با طعم سیب سبز.",
+    145,
+    "new",
+  ),
+  can(
+    "swim-tabiat",
+    "نوشابه گازدار آبی طبیعت",
+    "موج و شناگر در طبیعت؛ طعم آب سرد و نعنا.",
+    149,
+    "new",
+  ),
+  can(
+    "swim-jangal",
+    "نوشابه گازدار شنا در جنگل",
+    "جنگل سبز و شناگر؛ نوشیدنی گازدار با طعم کاج و لیمو.",
+    155,
+    "new",
+  ),
+  can(
+    "swim-moje",
+    "نوشابه گازدار موج سبز",
+    "شناگر روی موج کرم‌رنگ؛ طعم گلابی و نعنا.",
+    149,
+    "new",
+  ),
+  can(
+    "swim-barfi",
+    "نوشابه گازدار شنای برفی",
+    "موج سفید و شناگر؛ نوشیدنی گازدار با طعم یاس و لیمو.",
+    145,
+    "new",
+  ),
+  can(
+    "aqua",
+    "نوشابه گازدار آکوا",
+    "قوطی سبز و سفید AQUA؛ نوشیدنی گازدار با طعم لیمو و نمک دریایی.",
+    149,
+    "new",
+  ),
+  can(
+    "cloud-tar",
+    "نوشابه گازدار تاری و باد",
+    "ابرهای چشم‌دار و خوشنویسی؛ نوشیدنی گازدار با طعم باران و نعنا.",
+    155,
+    "new",
+  ),
+  can(
+    "cloud-bad",
+    "نوشابه گازدار باد و ابر",
+    "چشم در ابر آبی؛ طعم سیب و گلابی.",
+    155,
+    "new",
+  ),
+  can(
+    "cloud-sepid",
+    "نوشابه گازدار ابر سپید",
+    "ابرهای پیچان و متن خوشنویسی؛ نوشیدنی گازدار با طعم شیر و وانیل.",
+    159,
+    "new",
+  ),
+  can(
+    "cloud-cheshm",
+    "نوشابه گازدار چشم ابر",
+    "ابرهای چشم‌دار روی آبی روشن؛ طعم خیار و لیمو.",
+    155,
+    "new",
+  ),
+  can(
+    "cloud-blue",
+    "نوشابه گازدار ابر آبی",
+    "موج ابر و خوشنویسی؛ نوشیدنی گازدار با طعم زغال‌اخته.",
+    159,
+    "new",
+  ),
+  can(
+    "cloud-golgasht",
+    "نوشابه گازدار گلگشت شب",
+    "ابرهای چشمی و متن زرین؛ طعم انگور و یاس.",
+    165,
+    "new",
+  ),
+  can(
+    "cloud-abri",
+    "نوشابه گازدار ابری",
+    "ابر و باد روی آبی؛ نوشیدنی گازدار با طعم پرتقال.",
+    155,
+    "new",
+  ),
+  can(
+    "cloud-setare",
+    "نوشابه گازدار گلگشت ستاره",
+    "ابرهای چشم‌دار و ستاره؛ طعم لیمو و زعفران.",
+    159,
+    "new",
+  ),
+  can(
+    "saye-derakht",
+    "نوشابه گازدار سایه درخت",
+    "دختر بارانی‌پوش در جنگل؛ نوشیدنی گازدار با طعم توت جنگلی.",
+    155,
+    "new",
+  ),
+  can(
+    "saye-noghrei",
+    "نوشابه گازدار سایه درخت (نقره‌ای)",
+    "قوطی نقره‌ای و دختر سرخ‌پوش؛ طعم انار و نعنا.",
+    159,
+    "new",
+  ),
+  can(
+    "lale-noghrei",
+    "نوشابه گازدار لاله",
+    "دختر بارانی‌پوش و متن «لاله»؛ نوشیدنی گازدار با طعم گل لاله.",
+    159,
+    "new",
+  ),
+  can(
+    "golbarg-shab",
+    "نوشابه گازدار گلبرگ شب",
+    "دختر سرخ‌پوش در تاریکی؛ طعم گلبرگ و انگور.",
+    165,
+    "new",
+  ),
+  can(
+    "saye-dark",
+    "نوشابه گازدار سایهٔ شب",
+    "سایهٔ درخت و دختر سرخ‌پوش؛ کولای تیره با گلاب.",
+    165,
+    "new",
+  ),
+  can(
+    "saye-mah",
+    "نوشابه گازدار سایهٔ ماه",
+    "دختر در جنگل شب؛ نوشیدنی گازدار با طعم توت سیاه.",
+    159,
+    "new",
+  ),
+  can(
+    "abro",
+    "نوشابه گازدار سایهٔ درخت (خاکستری)",
+    "قوطی خاکستری و دختر سرخ‌پوش؛ طعم چای سیاه و لیمو.",
+    155,
+    "new",
+  ),
+  can(
+    "saye-gol",
+    "نوشابه گازدار سایهٔ گل",
+    "دختر در راه جنگل؛ نوشیدنی گازدار با طعم انار.",
+    159,
+    "new",
+  ),
+  can(
+    "saye-sepid",
+    "نوشابه گازدار سایهٔ سپید",
+    "دختر بلندقامت و قوطی خاکستری؛ طعم گلابی و یاس.",
+    155,
+    "new",
+  ),
+  can(
+    "tariki",
+    "نوشابه گازدار تاریکی",
+    "سایهٔ دختر در تاریکی؛ کولای تیره با رایحهٔ چوب.",
+    165,
+    "new",
+  ),
+  can(
+    "ghadam",
+    "نوشابه گازدار قدم آرام",
+    "دختر سرخ‌پوش و متن «قدم آرام»؛ نوشیدنی گازدار با طعم به.",
+    159,
+    "new",
+  ),
+  can(
+    "saye-gardan",
+    "نوشابه گازدار سایهٔ بلند",
+    "قوطی بلند و دختر سرخ‌پوش؛ طعم انگور و دارچین.",
+    159,
+    "new",
+  ),
+  can(
+    "frog-mint",
+    "نوشابه گازدار قورباغهٔ نعنایی",
+    "قورباغه‌های سبز روی نقره‌ای؛ نوشیدنی گازدار با طعم خیار و نعنا.",
+    149,
+    "new",
+  ),
+  can(
+    "frog-portrait",
+    "نوشابه گازدار دختر و قورباغه",
+    "پرترهٔ دختر موقرمز با قورباغه؛ طعم توت‌فرنگی و ریحان.",
+    165,
+    "new",
+  ),
+  can(
+    "frog-silver",
+    "نوشابه گازدار قورباغهٔ نقره‌ای",
+    "قورباغه‌های بنفش روی نقره؛ نوشیدنی گازدار با طعم انگور.",
+    155,
+    "new",
+  ),
+  can(
+    "frog-banafsh",
+    "نوشابه گازدار قورباغهٔ بنفش",
+    "دستهٔ قورباغه روی بنفش؛ کولای بنفش با ته‌مایهٔ توت.",
+    159,
+    "new",
+  ),
+  can(
+    "frog-yakh",
+    "نوشابه گازدار قورباغهٔ یخی",
+    "قورباغه‌های یخی روی بنفش؛ نوشیدنی گازدار با طعم نعنا.",
+    155,
+    "new",
+  ),
+  can(
+    "frog-lavender",
+    "نوشابه گازدار نیلوفر بنفش",
+    "قورباغه‌های نیلوفر روی یاسی؛ طعم گل یاس و انگور.",
+    159,
+    "new",
+  ),
+  can(
+    "frog-slim",
+    "نوشابه گازدار قورباغهٔ باریک",
+    "قوطی باریک یاسی و قورباغه؛ نوشیدنی گازدار با طعم آلبالو.",
+    155,
+    "new",
+  ),
+  can(
+    "frog-portre",
+    "نوشابه گازدار پرترهٔ قورباغه",
+    "دختر موقرمز و قورباغه روی نقره‌ای؛ طعم تمشک.",
+    165,
+    "new",
+  ),
+  can(
+    "frog-naghashi",
+    "نوشابه گازدار قورباغهٔ نقاشی",
+    "نقاشی دستی قورباغه روی نقره؛ نوشیدنی گازدار با طعم گلابی.",
+    159,
+    "new",
+  ),
+  can(
+    "frog-soda",
+    "نوشابه گازدار فروگ سودا",
+    "قورباغه‌های خاکستری و نوشتهٔ FROG SODA؛ طعم خیار تلخ و لیمو.",
+    149,
+    "new",
+  ),
+  can(
+    "frog-portre-2",
+    "نوشابه گازدار دختر و نیلوفر",
+    "پرترهٔ دختر و قورباغه در دایره؛ نوشیدنی گازدار با طعم توت‌فرنگی.",
+    159,
+    "new",
+  ),
 ];
 
 /** Picks catalogue products by id, so rows stay in sync with `PRODUCTS`. */
@@ -482,16 +1218,35 @@ function pick(...ids: string[]): Product[] {
 export const FESTIVAL_PRODUCT_ROW: ProductRow = {
   id: "festival",
   title: "جشنواره نوشیدنی‌های گازدار",
-  moreHref: "#",
+  moreHref: "/products",
   products: pick("limoo", "nove", "atash", "firooze", "yaghut", "shabnam"),
 };
 
 /** Horizontally scrolling product rows, each with its own heading. */
 export const SLIDER_SHOW_ROWS: ProductRow[] = [
   {
+    id: "new",
+    title: "کلکسیون جدید",
+    moreHref: "/products?cat=new",
+    products: pick(
+      "cyber-risky",
+      "eye-borun",
+      "pigeon-classic",
+      "swim-sobh",
+      "cloud-tar",
+      "saye-derakht",
+      "frog-mint",
+      "cyber-kiroshi",
+      "eye-zarrin",
+      "frog-portrait",
+      "pigeon-mah",
+      "saye-sepid",
+    ),
+  },
+  {
     id: "fruit",
     title: "طعم‌های میوه‌ای",
-    moreHref: "#",
+    moreHref: "/products?cat=fruit",
     products: pick(
       "shole",
       "alale",
@@ -508,13 +1263,13 @@ export const SLIDER_SHOW_ROWS: ProductRow[] = [
   {
     id: "modern",
     title: "خط مدرن",
-    moreHref: "#",
+    moreHref: "/products?cat=modern",
     products: pick("tala", "sabz", "sorkh", "abi", "siah"),
   },
   {
     id: "classic",
     title: "کلاسیک و خاص",
-    moreHref: "#",
+    moreHref: "/products?cat=classic",
     products: pick(
       "azar",
       "aftab",
@@ -529,7 +1284,7 @@ export const SLIDER_SHOW_ROWS: ProductRow[] = [
   {
     id: "night",
     title: "خط شبگرد",
-    moreHref: "#",
+    moreHref: "/products?cat=night",
     products: pick(
       "shabgard-moj",
       "shabgard-gardab",
@@ -547,7 +1302,7 @@ export const SLIDER_SHOW_ROWS: ProductRow[] = [
   {
     id: "dark-cola",
     title: "کولا تیره",
-    moreHref: "#",
+    moreHref: "/products?cat=dark-cola",
     products: pick(
       "mahtab-lake",
       "mahtab-window",
@@ -568,7 +1323,7 @@ export const SLIDER_SHOW_ROWS: ProductRow[] = [
   {
     id: "candle",
     title: "سری کندل",
-    moreHref: "#",
+    moreHref: "/products?cat=candle",
     products: pick(
       "kandel-1",
       "kandel-2",
@@ -826,9 +1581,25 @@ export const WHY_US_ITEMS: WhyUsItem[] = [
 
 /** Footer link columns. Real internal routes are used where a matching page
  * exists (blog, login, register); the rest intentionally point to "#". */
-export const FOOTER_LINKS: NavLink[] = [];
+export const FOOTER_LINKS: NavLink[] = [
+  { id: "footer-home", title: "خانه", href: "/" },
+  { id: "footer-products", title: "محصولات", href: "/products" },
+  { id: "footer-blog", title: "وبلاگ", href: "/blog" },
+  { id: "footer-cart", title: "سبد خرید", href: "/cart" },
+  { id: "footer-contact", title: "تماس با ما", href: "#main-footer" },
+];
 
-export const FOOTER_SERVICE_LINKS: NavLink[] = [];
+export const FOOTER_SERVICE_LINKS: NavLink[] = [
+  { id: "service-order", title: "پیگیری سفارش", href: "/cart" },
+  { id: "service-login", title: "ورود به حساب", href: "/login" },
+  { id: "service-register", title: "ثبت‌نام", href: "/register" },
+];
 
 /** Mobile bottom navigation bar. */
-export const BOTTOM_NAV_ITEMS: BottomNavItem[] = [];
+export const BOTTOM_NAV_ITEMS: BottomNavItem[] = [
+  { id: "home", icon: "home", label: "خانه" },
+  { id: "categories", icon: "grid_view", label: "دسته‌بندی‌ها" },
+  { id: "search", icon: "search", label: "جستجو" },
+  { id: "cart", icon: "shopping_cart", label: "سبد خرید" },
+  { id: "profile", icon: "person", label: "حساب کاربری" },
+];

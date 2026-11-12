@@ -10,7 +10,7 @@ export interface HeroSliderProps {
 }
 
 export function HeroSlider({ slides }: HeroSliderProps) {
-  const { activeIndex, goNext, goPrevious } = useHeroSlider(slides.length);
+  const { activeIndex, goNext, goPrevious, goTo, setPaused } = useHeroSlider(slides.length);
 
   const handleNext = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -23,7 +23,13 @@ export function HeroSlider({ slides }: HeroSliderProps) {
   };
 
   return (
-    <div className="slider-container">
+    <div
+      className="slider-container"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       {slides.map((slide, index) => (
         <div
           className={`slide${index === activeIndex ? " active" : ""}`}
@@ -35,16 +41,32 @@ export function HeroSlider({ slides }: HeroSliderProps) {
       ))}
       <div className="slider-button">
         <div>
-          <a href="#" className="next" onClick={handleNext}>
+          <a href="#" className="next" onClick={handleNext} aria-label="اسلاید بعدی">
             &lt;
           </a>
         </div>
         <div>
-          <a href="#" className="pre" onClick={handlePrevious}>
+          <a href="#" className="pre" onClick={handlePrevious} aria-label="اسلاید قبلی">
             &gt;
           </a>
         </div>
       </div>
+
+      {slides.length > 1 ? (
+        <div className="slider-dots" role="tablist" aria-label="انتخاب اسلاید">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.id}
+              type="button"
+              role="tab"
+              aria-selected={index === activeIndex}
+              aria-label={`اسلاید ${index + 1}`}
+              className={`slider-dot${index === activeIndex ? " slider-dot--active" : ""}`}
+              onClick={() => goTo(index)}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

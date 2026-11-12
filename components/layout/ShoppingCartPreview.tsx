@@ -23,7 +23,7 @@ export function ShoppingCartPreview() {
         </div>
         <div className="shopping-cart-links">
           <Link href="/">صفحه اصلی</Link>
-          <Link href="/blog">صفحه محصولات</Link>
+          <Link href="/products">صفحه محصولات</Link>
         </div>
       </section>
     );

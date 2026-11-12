@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CartProvider } from "@/contexts/CartContext";
 import { BrowserFrame } from "@/components/chrome/BrowserFrame";
+import { ToastHost } from "@/components/ui/ToastHost";
 import { SITE_NAME, SITE_URL } from "@/constants/data";
 import "./globals.css";
 import "./chrome.css";
@@ -46,7 +47,10 @@ export default function RootLayout({
       </head>
       <body>
         <BrowserFrame>
-          <CartProvider>{children}</CartProvider>
+          <CartProvider>
+            {children}
+            <ToastHost />
+          </CartProvider>
         </BrowserFrame>
       </body>
     </html>

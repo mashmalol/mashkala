@@ -6,7 +6,7 @@ import { FOOTER_LINKS, FOOTER_SERVICE_LINKS } from "@/constants/data";
 
 export function Footer() {
   return (
-    <footer>
+    <footer id="main-footer">
       <section className="newsletter">
         <div className="newsletter-right">
           <div className="newsletter-right-title">خبرنامه</div>

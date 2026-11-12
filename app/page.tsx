@@ -28,10 +28,14 @@ export default function HomePage() {
       <CategoryGrid title="دسته بندی ها" items={CATEGORY_ITEMS} />
 
       <PromoBanner
-        href="#"
+        href="/products?cat=new"
         src="/images/promo-1.jpg"
         alt="قوطی‌های طرح‌دار مشکله زیر نور فانوس در شب شرقی"
         objectPosition="center 72%"
+        title="کلکسیون هنری مشکله"
+        subtitle="قوطی‌هایی که مثل تابلوی نقاشی‌اند؛ تیراژ محدود"
+        ctaLabel="دیدن کلکسیون"
+        align="start"
       />
 
       <FestivalProductSlider row={FESTIVAL_PRODUCT_ROW} offerImage="/images/festival-tile.jpg" />
@@ -39,10 +43,14 @@ export default function HomePage() {
       <SliderShowSection rows={SLIDER_SHOW_ROWS} />
 
       <PromoBanner
-        href="#"
+        href="/products?cat=fruit"
         src="/images/promo-2.jpg"
         alt="انار، لیمو و نعنا در حباب‌های نوشیدنی گازدار"
         objectPosition="center 45%"
+        title="طعم انار، لیمو و نعنا"
+        subtitle="خنکی تابستان در هر جرعه؛ همین حالا سفارش بده"
+        ctaLabel="خرید طعم‌های میوه‌ای"
+        align="end"
       />
 
       <BlogSection title="مطالب اخیر وبلاگ" posts={BLOG_POSTS} />
